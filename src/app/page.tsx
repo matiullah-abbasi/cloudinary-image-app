@@ -27,7 +27,6 @@ export default function Home() {
   src={imageId}
   sizes="100vw"
     
-    blurFaces
   alt="Description of my image"
       
 />
