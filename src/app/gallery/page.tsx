@@ -1,8 +1,9 @@
 import React from "react";
 import UploadButton from "./upload-button";
 import cloudinary from "cloudinary";
-import Cloudinaryimage from "./cloudinary-image";
+import Cloudinaryimage from "@/components/cloudinary-image";
 import ForceRefresh from "@/components/forced-refresh";
+import ImageGrid from "@/components/image-grid";
 
 export type SearchResult = {
   public_id: string;
@@ -18,6 +19,7 @@ export default async function Gallerypage() {
      .execute()) as {resources:SearchResult[]};
   console.log("reslts",results)
 
+
   return (
     <section>
       <ForceRefresh/>
@@ -26,22 +28,20 @@ export default async function Gallerypage() {
         <h1 className="text-4xl font-bold">Gallery</h1>
         <UploadButton />
         </div>
-        <div className="grid  grid-cols-4 gap-2">
-
-       {
-        results.resources.map( (result)=>(
-          <Cloudinaryimage kry={result.public_id}
-           imageData={result}
-           alt="an image of beautiful world"
-           width="400"
-           height="300"
-
-          />
-        ))
-       }
-
-        </div>
-      </div>
+              <ImageGrid images={results.resources}  
+              getImage={
+                (imageData:SearchResult)=>{
+                return(
+                <Cloudinaryimage
+                key={imageData.public_id}
+                imageData={imageData}
+                alt="an image of beautiful world"
+                width="400"
+                height="300"
+         
+               />)}}
+              />
+              </div>
     </section>
   );
 }
