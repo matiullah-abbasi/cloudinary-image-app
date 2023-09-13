@@ -30,10 +30,10 @@ export default function Cloudinaryimage(
     }  }  className='absolute  top-2 left-2 hover:text-red-700 cursor-pointer'/>
      :<Heart  onClick={()=>{
       setisFavoried(true)
-      
+
       startTransition(()=>{  setAsFavoriteActions(imageData.public_id,true )})
     }  }  className='absolute  top-2 left-2 hover:text-red-700 cursor-pointer'/>}
-  <ImageMenu/>
+  <ImageMenu image={imageData}/>
     </div>
     
   )
