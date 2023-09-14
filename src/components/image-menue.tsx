@@ -1,5 +1,5 @@
 import {
-  FolderPlus
+  FolderPlus, Pencil
   } from "lucide-react"
   
   import { Button } from "@/components/ui/button"
@@ -13,6 +13,7 @@ import Menu from "./icons/menu"
 import { AddToAlbumDialog } from "./add-to-album-grid"
 import { SearchResult } from "@/app/gallery/page"
 import { useState } from "react"
+import Link from "next/link"
   
   export function ImageMenu({image}:{image:SearchResult}) {
     const [open,setopen]=useState(false)
@@ -27,6 +28,15 @@ import { useState } from "react"
             <AddToAlbumDialog  image={image} onClose={()=>setopen(false)}/>
               
             </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+            <Button asChild  className="cursor-pointer pl-4 flex justify-start">         
+                  <Link href={`/edit?publicId=${encodeURIComponent(image.public_id)}`}>
+              <Pencil className="h-4 w-4 mr-2"/>
+              Edit</Link>
+              </Button>
+
+            </DropdownMenuItem> 
+
         </DropdownMenuContent> 
       </DropdownMenu>
       </div>
