@@ -1,3 +1,4 @@
+//@ts-nocheck
 'use client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -24,7 +25,7 @@ const [transformation,setTransformation]=useState<undefined|"generative-fill"|"b
   const [pendingprompt,setpendingprompt]=useState('')
     return (
   
-    <section>
+    <>
       
       <div className="flex flex-col gap-8">
         <div className="flex justify-between">
@@ -39,7 +40,7 @@ const [transformation,setTransformation]=useState<undefined|"generative-fill"|"b
       setprompt(pendingprompt)
       }}>Apply Generative Fill</Button>
     <Label>Prompt</Label>
-    <Input value={pendingprompt} onChange={e=>setprompt(e.target.value)}/>
+    <Input value={pendingprompt} onChange={e=>setpendingprompt(e.target.value)}/>
     
     </div>
    
@@ -59,9 +60,9 @@ const [transformation,setTransformation]=useState<undefined|"generative-fill"|"b
     height={300}
     alt='some image'
     crop='pad'
-    fillBackground {{
-      prompt,
-    }} />)}
+    fillBackground ={{
+      prompt,}}
+     />)}
 
 
 
@@ -71,7 +72,8 @@ const [transformation,setTransformation]=useState<undefined|"generative-fill"|"b
     width={400}
     height={300}
     alt='some image'
-   blur
+   
+    blur="1200"
     />)
  }
 
@@ -82,7 +84,7 @@ const [transformation,setTransformation]=useState<undefined|"generative-fill"|"b
     width={400}
     height={300}
     alt='some image'
-   grayscale
+   grayscale="800"
     />)
     }
 
@@ -109,6 +111,6 @@ const [transformation,setTransformation]=useState<undefined|"generative-fill"|"b
 
          </div>
                      </div>
-    </section>
+    </>
   )
 }

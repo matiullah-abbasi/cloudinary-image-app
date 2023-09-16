@@ -101,7 +101,7 @@ export default function RootLayout({
           <div className="container mx-auto flex h-16 items-center px-4 gap-2">
            <Image src="/album.png" alt ="an image" height={40}
             width ={50} />
-                      Mati's Photos App
+                      Matis Photos App
              <div className="ml-auto flex items-center space-x-4">
              <Avatar>
       <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
